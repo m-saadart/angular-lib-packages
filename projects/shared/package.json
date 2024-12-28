@@ -1,23 +1,17 @@
 {
-  "name": "@msaadart/shared",
+  "name": "shared",
   "version": "1.0.0",
-  "main": "dist/shared",
   "description": "My private Angular library",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+    "registry": "https://npm.pkg.github.com/@msaadart"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/msaadart/angular-lib-packages.git"
-  },
-  "author": "Muhammad Saad",
-  "license": "MIT",
+  "author": "",
+  "license":"ISC",
   "peerDependencies": {
     "@angular/common": "^18.2.0",
     "@angular/core": "^18.2.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
-  },
-  "sideEffects": false
+  }
 }
