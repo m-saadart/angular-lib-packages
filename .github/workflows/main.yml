@@ -21,7 +21,7 @@ jobs:
           registry-url: https://npm.pkg.github.com/
 
       - name: Configure npm for GitHub Packages
-        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.TOKEN_ACCESS }}" > .npmrc
+        run: echo "//npm.pkg.github.com/:_authToken=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" > .npmrc
 
       - name: Install Dependencies
         run: npm install
@@ -35,4 +35,4 @@ jobs:
           cd dist/shared
           npm publish
           env:
-            NODE_AUTH_TOKEN: ${{ secrets.TOKEN_ACCESS }}
+            NODE_AUTH_TOKEN: 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
