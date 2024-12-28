@@ -31,6 +31,7 @@ jobs:
 
       - name: Publish to GitHub Packages
         run: | 
+          npm config set loglevel verbose
           cd dist/shared
           npm publish
           env:
