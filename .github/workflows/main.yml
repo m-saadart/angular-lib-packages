@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - "v*.*.*"
 
 jobs:
   publish:
@@ -22,9 +23,6 @@ jobs:
       - name: Configure npm for GitHub Packages
         run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.TOKEN_ACCESS }}" > .npmrc
 
-      - name: Clear npm Cache
-        run: npm cache clean --force
-
       - name: Install Dependencies
         run: npm install
 
@@ -32,6 +30,8 @@ jobs:
         run: npm run build shared
 
       - name: Publish to GitHub Packages
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.TOKEN_ACCESS }}
-        run: npm publish dist/shared
+        run: | 
+          cd dist 
+          npm publish
+          env:
+            NODE_AUTH_TOKEN: ${{ secrets.TOKEN_ACCESS }}
