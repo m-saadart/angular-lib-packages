@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - "v*.*.*"
 
 jobs:
   publish:
@@ -35,4 +34,4 @@ jobs:
       - name: Publish to GitHub Packages
         env:
           NODE_AUTH_TOKEN: ${{ secrets.TOKEN_ACCESS }}
-        run: npm publish dist/my-angular-lib
+        run: npm publish dist/shared
