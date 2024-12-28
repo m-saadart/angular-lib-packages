@@ -31,7 +31,7 @@ jobs:
 
       - name: Publish to GitHub Packages
         run: | 
-          cd /home/runner/work/angular-lib-packages/angular-lib-packages/dist/shared 
+          cd dist/shared
           npm publish
           env:
             NODE_AUTH_TOKEN: ${{ secrets.TOKEN_ACCESS }}
