@@ -1,6 +1,7 @@
 {
   "name": "@msaadart/shared",
   "version": "1.0.0",
+  "main": "dist/shared",
   "description": "My private Angular library",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"

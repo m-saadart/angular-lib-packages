@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - "v*.*.*"
+
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -19,6 +20,9 @@ jobs:
           node-version: 18
           registry-url: https://npm.pkg.github.com/
 
+      - name: Configure npm for GitHub Packages
+        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.TOKEN_ACCESS }}" > .npmrc
+
       - name: Install Dependencies
         run: npm install
 
@@ -28,4 +32,4 @@ jobs:
       - name: Publish to GitHub Packages
         env:
           NODE_AUTH_TOKEN: ${{ secrets.TOKEN_ACCESS }}
-        run: npm publish dist/my-angular-lib
+        run: npm publish dist/shared
