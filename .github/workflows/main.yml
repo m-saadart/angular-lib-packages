@@ -29,6 +29,6 @@ jobs:
         run: npm run build shared
 
       - name: Publish to GitHub Packages
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.TOKEN_ACCESS }}
-        run: npm publish dist/shared
