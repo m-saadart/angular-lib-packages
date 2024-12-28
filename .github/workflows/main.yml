@@ -6,33 +6,24 @@ on:
       - main
       - "v*.*.*"
 
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
 jobs:
   publish:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      -  uses: actions/checkout@v3
+      -  uses: actions/setup-node@v3
         with:
           node-version: 18
-          registry-url: https://npm.pkg.github.com/
-
-      - name: Configure npm for GitHub Packages
-        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.TOKEN_ACCESS }}" > .npmrc
-
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Build Angular Library
-        run: npm run build shared
-
-      - name: Publish to GitHub Packages
-        run: | 
-          npm config set loglevel verbose
-          cd dist/shared
-          npm publish
-          env:
-            NODE_AUTH_TOKEN: ${{ secrets.TOKEN_ACCESS }}
+      - run: npm ci
+      - run: npm run build
+      - run: npm audit signatures
+      - name: Publish
+        env:
+            NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm publish 
