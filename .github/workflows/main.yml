@@ -27,4 +27,6 @@ jobs:
       #     https://api.github.com/repos/${{ github.repository }}
       - run: npm install
       - run: npm run build shared
-      - run: npm run publish dist/shared
+      - run: |
+          cd dist/shared
+          npm publish --access public
