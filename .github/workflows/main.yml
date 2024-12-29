@@ -1,34 +1,25 @@
-name: Build and Publish Angular Library
-
+name: Publish Angular Library
 on:
   push:
     branches:
       - main
       - "v*.*.*"
-      
+
 jobs:
-  build-and-publish:
+  validate-token:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          registry-url: https://npm.pkg.github.com/
-
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Build Angular Library
-        run: npm run build
-
-      - name: Publish to GitHub Packages
+      - name: Create an Issue Using GITHUB_TOKEN
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          curl -X POST -H "Authorization: Bearer $GITHUB_TOKEN" \
+               -H "Accept: application/vnd.github.v3+json" \
+               https://api.github.com/repos/${{ github.repository }}/issues \
+               -d '{"title": "Test Issue", "body": "This is a test issue to validate GITHUB_TOKEN."}'
+
+
         run: npm publish dist/shared --access public 
 
    
