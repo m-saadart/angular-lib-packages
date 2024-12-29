@@ -1,13 +1,13 @@
-name: Build and Publish Angular Library
+name: Publish Angular Library to GitHub Packages
 
 on:
   push:
     branches:
       - main
       - "v*.*.*"
-      
+
 jobs:
-  build-and-publish:
+  publish:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,11 +24,9 @@ jobs:
         run: npm install
 
       - name: Build Angular Library
-        run: npm run build
+        run: npm run build shared
 
       - name: Publish to GitHub Packages
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm publish dist/shared --access public 
-
-   
+          NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: npm publish dist/shared
