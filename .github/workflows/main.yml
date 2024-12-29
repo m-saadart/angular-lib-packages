@@ -19,7 +19,4 @@ jobs:
                https://api.github.com/repos/${{ github.repository }}/issues \
                -d '{"title": "Test Issue", "body": "This is a test issue to validate GITHUB_TOKEN."}'
 
-
-        run: npm publish dist/shared --access public 
-
    
