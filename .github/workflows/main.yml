@@ -29,4 +29,4 @@ jobs:
       - name: Publish to GitHub Packages
         env:
           NODE_AUTH_TOKEN: ${{ secrets.TOKEN_ACCESS }}
-        run: npm publish dist/shared
+        run: npm publish @msaadart/shared

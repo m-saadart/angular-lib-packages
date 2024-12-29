@@ -3,7 +3,7 @@
   "version": "1.0.4",
   "description": "My private Angular library",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/@msaadart"
+    "registry": "https://npm.pkg.github.com/"
   },
   "author": "",
   "license": "MIT",
