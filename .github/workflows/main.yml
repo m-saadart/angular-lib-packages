@@ -6,28 +6,25 @@ on:
       - main
       - "v*.*.*"
 
+permissions:
+    contents: read
+    packages: write
+
 jobs:
-  publish:
+  publish-gpr:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: 18
           registry-url: https://npm.pkg.github.com/
           scope: '@msaadart'
-
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Build Angular Library
-        run: npm run build shared
-
-      - name: Publish to GitHub Packages
-        run: npm publish dist/shared
+      - run: |
+          curl -H "Authorization: Bearer $GITHUB_TOKEN" \
+          -H "Accept: application/vnd.github.v3+json" \
+          https://api.github.com/repos/${{ github.repository }}
+      - run: npm install
+      - run: npm publish dist/shared
         env:
-          NODE_AUTH_TOKEN: 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
+          NODE_AUTH_TOKEN: ${{secrets.TOKEN_ACCESS}}
