@@ -20,11 +20,12 @@ jobs:
           node-version: 18
           registry-url: https://npm.pkg.github.com/
           scope: '@msaadart'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.TOKEN_ACCESS }}
       - run: |
-          curl -H "Authorization: Bearer $GITHUB_TOKEN" \
+          curl -H "Authorization: Bearer $NODE_AUTH_TOKEN" \
           -H "Accept: application/vnd.github.v3+json" \
           https://api.github.com/repos/${{ github.repository }}
       - run: npm install
       - run: npm publish dist/shared
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.TOKEN_ACCESS}}
+        
