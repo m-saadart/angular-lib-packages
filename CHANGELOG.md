@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/msaadart/angular-lib-packages/compare/v1.1.1...v1.1.2) (2025-01-29)
+
+
+### Bug Fixes
+
+* Fix a bug ([6009b93](https://github.com/msaadart/angular-lib-packages/commit/6009b9365066bc1edd43777dceacfc36ca1c13cd))
+
 ## [1.1.1](https://github.com/msaadart/angular-lib-packages/compare/v1.1.0...v1.1.1) (2025-01-29)
 
 
