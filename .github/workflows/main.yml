@@ -10,26 +10,29 @@ jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
       packages: write
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
           node-version: '20.x'
           registry-url: 'https://npm.pkg.github.com'
           scope: '@msaadart'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.TOKEN_ACCESS }}
-      # - run: |
-      #     curl -H "Authorization: Bearer $NODE_AUTH_TOKEN" \
-      #     -H "Accept: application/vnd.github.v3+json" \
-      #     https://api.github.com/repos/${{ github.repository }}
-      - run: npm install
-      - run: npm run build shared
-      - run: |
-          cd dist/shared
-          npm publish --access public
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Library
+        run: npm run build shared
+
+      - name: Run Semantic Release
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.TOKEN_ACCESS }}
-      - run: npx semantic-release
+        run: npx semantic-release
