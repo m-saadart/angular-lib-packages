@@ -9,6 +9,8 @@ export class DataTransferService {
   private dataSubject = new BehaviorSubject<any>(null);
   public data$ = this.dataSubject.asObservable();
 
+  public permission:Array<any> = []
+
   constructor() {}
 
   setData(data: any): void {
