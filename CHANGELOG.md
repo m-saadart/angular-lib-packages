@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/msaadart/angular-lib-packages/compare/v1.1.2...v1.2.0) (2025-01-29)
+
+
+### Features
+
+* library setup ([49c1854](https://github.com/msaadart/angular-lib-packages/commit/49c18540f5380ebe69de6be0b39b305d362bf8ba))
+
 ## [1.1.2](https://github.com/msaadart/angular-lib-packages/compare/v1.1.1...v1.1.2) (2025-01-29)
 
 
