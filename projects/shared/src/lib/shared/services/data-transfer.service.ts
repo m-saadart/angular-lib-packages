@@ -8,6 +8,7 @@ export class DataTransferService {
 
   private dataSubject = new BehaviorSubject<any>(null);
   public data$ = this.dataSubject.asObservable();
+  private data: any;
 
   constructor() {}
 
@@ -17,5 +18,9 @@ export class DataTransferService {
 
   getData(): any {
     return this.dataSubject.value;
+  }
+
+  clearData(): void {
+    this.dataSubject.next(null);
   }
 }
