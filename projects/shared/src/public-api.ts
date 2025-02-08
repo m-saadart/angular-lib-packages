@@ -1,5 +1,5 @@
 /*
- * Public API Surface of shared saad
+ * Public API Surface of shared
  */
 
 export * from './lib/shared.service';
