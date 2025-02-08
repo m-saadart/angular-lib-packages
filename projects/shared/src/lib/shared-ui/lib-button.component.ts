@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   imports: [],
   template: `
     <p>
-      lib-button works! saad
+      lib-button works
     </p>
   `,
   styles: ``
